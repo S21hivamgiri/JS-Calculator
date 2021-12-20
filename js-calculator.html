@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+    <script>
+        function clearall() {
+            document.getElementById('eq').innerHTML = 'Ans';
+            document.getElementById('error').innerHTML = '';
+            document.getElementById('equation').innerHTML = '';
+            document.getElementById('panel1').value = '';
+            document.getElementById('panel2').value = '';
+            document.getElementById('operator').value = '--Select--';
+        }
+
+        function CalculateResult() {
+            var num1 = document.getElementById('panel1').value
+            var num2 = document.getElementById('panel2').value
+            var opt = document.getElementById('operator').value
+            var value = ''
+            var err = ''
+            var eq = ''
+            if (num2 == "" || num1 == "") {
+                err = "Illegal Operation, oprand cannot be null. Press C";
+                value = "Ans";
+                eq = ''
+
+            } else if (num2 == "0" && (opt == '/' || opt == '%')) {
+                err = "Illegal Operation, divide by 0, press C";
+                value = "Ans";
+                eq = ''
+
+            } else if (opt == '--Select--') {
+                err = "Illegal Operation, operator not selected, press C";
+                value = "Ans";
+                eq = ''
+            } else {
+                num1 = Number(num1);
+                err = ''
+                num2 = Number(num2);
+                switch (opt) {
+                    case '+':
+                        value = num1 + num2;
+                        break;
+                    case '-':
+                        value = num1 - num2;
+                        break;
+                    case '*':
+                        value = num1 * num2;
+                        break;
+                    case '/':
+                        value = num1 / num2;
+                        break;
+                    case '%':
+                        value = num1 % num2;
+                        break;
+                }
+                if (value % 1 !== 0)
+                    value = value.toFixed(5);
+                eq = '' + num1 + ' ' + opt + ' ' + num2 + ' = ' + value
+            }
+            document.getElementById('eq').innerHTML = value;
+            document.getElementById('error').innerHTML = err;
+            document.getElementById('equation').innerHTML = eq;
+        }
+    </script>
+</head>
+
+<body class="bg-dark">
+    <div>
+        <h1 class="display-3 text-warning font-weight-bold text-center"> <i class="fa fa-calculator"
+                aria-hidden="true"></i> Javascript Calculator</h1>
+        <div class="my-2 border-top border-warning"></div>
+        <div class="container ">
+            <div class="row text-center my-5 mx-0">
+                <div class="col-12 col-md-1 col-lg-1 col-sm-1 col-xl-1"></div>
+                <div
+                    class="col-12 col-md-10 col-lg-10 col-sm-12 col-xl-10 alert alert-warning border border-warning inline-block">
+                    <div class="row">
+                        <div class="h1 col-12 text-warning">SHIVAM'S CALCULATOR
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0  form-check-inline">
+                            1<sup>st</sup> &nbsp; Number
+                        </div>
+                        <div class="col-12 col-md-2 col-lg-2 col-sm-2 col-xl-2 px-0 mx-0  form-check-inline">
+                            Operator
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0  form-check-inline">
+                            2<sup>nd</sup> &nbsp; Number
+                        </div>
+                        <div class="col-12 col-md-1 col-lg-1 col-sm-1 col-xl-1 px-0 mx-0  form-check-inline">
+                            Submit
+                        </div>
+                        <div class="col-12 col-md-2 col-lg-2 col-sm-2 col-xl-2 px-4 mx-0  form-check-inline">
+                            Answer
+                        </div>
+                        <div class="col-12 col-md-1 col-lg-1 col-sm-1 col-xl-1 px-0 mx-0  form-check-inline">
+                            Clear
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0  form-check-inline">
+                            <input placeholder='Enter Real Number 1' id='panel1'
+                                class="text-right border border-warning alert alert-light form-control form-control-lg"
+                                type="number" />
+                        </div>
+                        <div class="col-12 col-md-2 col-lg-2 col-sm-2 col-xl-2 px-0 mx-0  form-check-inline">
+                            <select class=" form-control form-control-lg border border-warning alert-light alert"
+                                id="operator">
+                                <option class="dropdown-item font-weight-bold">--Select--</option>
+                                <option class="dropdown-item font-weight-bold">+</option>
+                                <option class="dropdown-item font-weight-bold">-</option>
+                                <option class="dropdown-item font-weight-bold">*</option>
+                                <option class="dropdown-item font-weight-bold">/</option>
+                                <option class="dropdown-item font-weight-bold">%</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0  form-check-inline">
+                            <input placeholder='Enter Real Number 2' id='panel2'
+                                class="text-right border border-warning alert alert-light form-control form-control-lg"
+                                type="number" />
+                        </div>
+                        <div class="col-12 col-md-1 col-lg-1 col-sm-1 col-xl-1 px-0 mx-0  form-check-inline">
+                            <div class="alert-light alert  form-check-inline border border-warning btn-outline-light"
+                                style="cursor:pointer" onclick="CalculateResult ()">
+                                <span class="text-warning font-weight-bold  ">SUBMIT</span>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2 col-lg-2 col-sm-2 col-xl-2 px-4 mx-0  form-check-inline">
+                            <div class="alert-light alert  form-check-inline border border-warning">
+                                <span class="text-warning font-weight-bold" id='eq'>Ans</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-1 col-lg-1 col-sm-1 col-xl-1 px-0 mx-0  form-check-inline">
+                            <div class="alert-danger alert  form-check-inline border border-danger"
+                                style="cursor:pointer" onclick="clearall()">
+                                <span class="font-weight-bold text-danger">C</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center text-danger" id="error"> </div>
+                    <div class="border-top border-warning"></div>
+                    <br>
+                </div>
+                <div class="col-12 col-md-1 col-lg-1 col-sm-1 col-xl-1"></div>
+            </div>
+            <div class="text-center text-warning font-weight-bold  h1" id="equation"> </div>
+        </div>
+    </div>
+    <div class="my-2 border-top border-warning"></div>
+    <div class="my-2 alert alert-warning text-center h4">Made with <span class='text-danger'>❤</span> by <span
+            class='font-weight-bold text-danger'>Shivam Kumar Giri</span>
+    </div>
+    <div class="my-2 border-top border-warning"></div>
+</body>
+
+</html>

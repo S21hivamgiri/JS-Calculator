@@ -1,0 +1,239 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+<div class="jumbotron">
+    <h1 class="display-3 text-warning font-weight-bold text-center"> <i class="fa fa-calculator" aria-hidden="true"></i>
+        Javascript Calculator</h1>
+    <hr class="my-2">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-md-2 col-lg-4 col-sm-1 col-xl-4"></div>
+            <div
+                class="col-12 col-md-8 col-lg-4 col-sm-10 col-xl-4 alert alert-warning border border-warning inline-block">
+                <div class="row">
+                    <div class="h1 col-12 text-warning">SHIVAM'S CALCULATOR <i class="fa fa-calculator"
+                            aria-hidden="true"></i>
+                    </div>
+                    <div class="col-12 col-md-9 col-lg-9 col-sm-9 col-xl-9 px-0 mx-0  form-check-inline">
+                        <input type="text" placeholder='0' id='panel'
+                            class="text-right border border-warning alert alert-light form-control form-control-lg" />
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0  form-check-inline">
+                        <div class="alert-light alert  form-check-inline border border-warning">
+                            <span class="alert-light text-warning font-weight-bold" id='eq'>Ans</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-danger" id="error"> </div>
+                <div class="border-top border-warning"></div>
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1  form-check-inline">
+                            <button type="button" onclick="add(1)" value="1" class="btn btn-warning btn-lg">1</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1  form-check-inline">
+                            <button type="button" onclick="add(2)" value="2" class="btn btn-warning btn-lg">2</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0  py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(3)" value="3" class="btn btn-warning btn-lg">3</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0  py-1 my-1 form-check-inline">
+                            <button type="button" onclick="solve('+')" value="+" class="btn btn-dark btn-lg">+</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(4)" value="4" class="btn btn-warning btn-lg">4</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(5)" value="5" class="btn btn-warning btn-lg">5</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(6)" value="6" class="btn btn-warning btn-lg">6</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="solve('~')" value="-" class="btn btn-dark  btn-lg">-</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(7)" value="7" class="btn btn-warning btn-lg">7</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(8)" value="8" class="btn btn-warning btn-lg">8</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(9)" value="9" class="btn btn-warning btn-lg">9</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3  px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="solve('*')" value="*" class="btn btn-dark  btn-lg">x</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" value="C" onclick="clearall()"
+                                class=" btn btn-danger btn-lg">C</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="add(0)" value="0" class="btn btn-warning btn-lg">0</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" value="=" onclick="eqsolve()"
+                                class="btn btn-warning btn-lg">=</button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-3 col-sm-3 col-xl-3 px-0 mx-0 py-1 my-1 form-check-inline">
+                            <button type="button" onclick="solve('/')" value="/" class="btn btn-dark  btn-lg">/</button>
+                        </div>
+                    </div>
+                    <div class="border-bottom my-3 border-warning"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-2 col-lg-4 col-sm-1 col-xl-4"></div>
+        </div>
+    </div>
+</div>
+<script>
+    str = "";
+    eqstr = "";
+    spstr = [];
+    value = "Ans";
+    eq = "";
+
+    var index, val1, val2, err = "";
+    function clearall() {
+        str = "";
+        eqstr = "";
+        value = "Ans";
+        document.getElementById('panel').value = str;
+        document.getElementById('eq').innerHTML = value;
+        err = "";
+        document.getElementById('error').innerHTML = err;
+    }
+
+    function eqsolve() {
+        if (eqstr.includes('+')) {
+            eq = '+';
+        } else
+            if (eqstr.includes('~')) {
+                eq = '~';
+            } else
+                if (eqstr.includes('*')) {
+                    eq = '*';
+                } else
+                    if (eqstr.includes('/')) {
+                        eq = '/';
+                    }
+        spstr = eqstr.split(eq);
+        if (spstr[1] == "0" && eq == '/') {
+            str = "";
+            eqstr = "";
+            err = "Illegal Operation, divide by 0 Press C";
+            document.getElementById('error').innerHTML = err;
+            value = "Ans";
+
+        } else {
+            val1 = Number(spstr[0]);
+            val2 = Number(spstr[1]);
+            switch (eq) {
+                case '+':
+                    value = val1 + val2;
+                    break;
+                case '~':
+                    value = val1 - val2;
+                    break;
+                case '*':
+                    value = val1 * val2;
+                    break;
+                case '/':
+                    value = val1 / val2;
+                    break;
+
+            }
+            if (value % 1 !== 0)
+                value = value.toFixed(5);
+            document.getElementById('eq').innerHTML = value;
+        }
+    }
+
+    function add(values) {
+        str = str + values;
+        eqstr = eqstr + values;
+        document.getElementById('panel').value = str;
+    }
+
+    function solve(values) {
+
+        if (eqstr.includes('+')) {
+            eq = '+';
+        } else
+            if (eqstr.includes('~')) {
+                eq = '~';
+            } else
+                if (eqstr.includes('*')) {
+                    eq = '*';
+                } else
+                    if (eqstr.includes('/')) {
+                        eq = '/';
+                    } else {
+                        eq = '';
+                    }
+
+        if (eq != '') {
+            spstr = eqstr.split(eq);
+            if (spstr[1] == "" || spstr[0] == "") {
+                str = "";
+                eqstr = "";
+                err = "Illegal Operation Press C";
+                document.getElementById('error').innerHTML = err;
+                value = "Ans";
+
+            } else if (spstr[1] == "0" && eq == '/') {
+                str = "";
+                eqstr = "";
+                err = "Illegal Operation, divide by 0, press C";
+                document.getElementById('error').innerHTML = err;
+                value = "Ans";
+
+            } else {
+                val1 = Number(spstr[0]);
+                val2 = Number(spstr[1]);
+
+                switch (eq) {
+                    case '+':
+                        value = val1 + val2;
+                        break;
+                    case '~':
+                        value = val1 - val2;
+                        break;
+                    case '*':
+                        value = val1 * val2;
+                        break;
+                    case '/':
+                        value = val1 / val2;
+                        break;
+
+                }
+                if (value % 1 !== 0)
+                    value = value.toFixed(5);
+                document.getElementById('eq').innerHTML = value;
+                eqstr = value + values;
+            }
+        } else {
+            eqstr = eqstr + values;
+            value = "Ans";
+            document.getElementById('eq').innerHTML = value;
+            err = "";
+        }
+        str = str + values;
+        document.getElementById('panel').innerHTML = str;
+    }
+</script>
